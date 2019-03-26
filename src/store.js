@@ -9,8 +9,7 @@ export default new Vuex.Store({
   },
   mutations: {
     increment(state) {
-      const timeToUpdate = Date.now();
-      state.date = timeToUpdate;
+      state.date = Date.now(); // eslint-disable-line no-param-reassign
     },
   },
   actions: {
