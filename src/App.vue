@@ -1,29 +1,45 @@
 <template>
   <div id="app">
-    <div id="nav">
+    <!-- <div id="nav">
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link>
-    </div>
+    </div> -->
+    <NavTime />
     <router-view/>
   </div>
 </template>
 
+<script>
+  import NavTime from '@/components/NavTime.vue';
+
+  export default {
+    name: 'app',
+    components: {
+      NavTime,
+    },
+  };
+</script>
+
 <style lang="scss">
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-#nav {
-  padding: 30px;
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-    &.router-link-exact-active {
-      color: #42b983;
+  // base settings
+  @import './styles/base';
+
+  // colors list
+  @import './styles/colors';
+
+  // fonts
+  @import url('https://fonts.googleapis.com/css?family=Barlow:400,500,600,800');
+
+  $base-font: 'Barlow', 'segoe ui', Helvatica, arial, sans-serif;
+
+  body {
+    font-family: $base-font;
+  }
+
+  @media only screen and (min-width: 1025px) {
+    .container {
+      margin: 0 auto;
+      max-width: 700px;
     }
   }
-}
 </style>
