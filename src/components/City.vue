@@ -1,5 +1,5 @@
 <template>
-  <li class="city">
+  <li class="city" @click="deleteCity(itr)">
     <div class="location">
       <span class="name">{{ name }}</span>, <span class="country">{{ country }}</span>
     </div>
@@ -20,7 +20,8 @@ export default {
     'name',
     'timezone',
     'countryCode',
-    'date'
+    'date',
+    'itr',
   ],
   computed: {
     getDate () {
@@ -38,6 +39,13 @@ export default {
       return date !== '---' ? date.toFormat('h:mm') : date;
     },
   },
+  methods: {
+    deleteCity(itr) {
+      this.$store.dispatch('deleteCity', {
+        itr,
+      });
+    },
+  }
 };
 </script>
 
