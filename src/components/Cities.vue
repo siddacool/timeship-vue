@@ -1,7 +1,7 @@
 <template>
   <div class="cities">
     <ul>
-      <City v-for="town in cityList" :key="town.city_id" :name="town.name" :country="town.country" :timezone="town.timezone" :date="date"/>
+      <City v-for="town in cityList" :key="town.city_id" :name="town.name" :country="town.country_name" :timezone="town.timezone" :date="date"/>
     </ul>
   </div>
 </template>
@@ -47,5 +47,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-
+  .cities {
+    padding-top: 8px;
+  }
 </style>
