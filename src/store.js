@@ -33,6 +33,24 @@ export default new Vuex.Store({
       const filtred = state.cityList.filter(el => el.city_id !== payload.itr);
       state.cityList = filtred; // eslint-disable-line no-param-reassign
     },
+    sortCities(state, cities) {
+      const sorted = [];
+
+      cities.forEach(({
+        city_id: cityId, country, country_name: countryName, date, name, timezone,
+      }) => {
+        sorted.push({
+          city_id: cityId,
+          country,
+          country_name: countryName,
+          date,
+          name,
+          timezone,
+        });
+      });
+
+      state.cityList = sorted; // eslint-disable-line no-param-reassign
+    },
   },
   actions: {
     starttime(context) {
@@ -46,6 +64,11 @@ export default new Vuex.Store({
     },
     deleteCity(context, payload) {
       context.commit('removeCity', payload);
+    },
+    updateCities(context, payload) {
+      if (payload && payload.cities && payload.cities.length) {
+        context.commit('sortCities', payload.cities);
+      }
     },
   },
 });

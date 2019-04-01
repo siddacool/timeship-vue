@@ -1,13 +1,13 @@
 import Vue from 'vue';
-import VueTouch from 'vue-touch';
+import LongPress from 'vue-directive-long-press'
 import App from './App.vue';
 import router from './router';
 import store from './store';
 import './registerServiceWorker';
 
-Vue.use(VueTouch, { name: 'v-touch' });
-
 Vue.config.productionTip = false;
+
+Vue.directive('long-press', LongPress);
 
 router.beforeEach((to, from, next) => {
   document.title = to.meta.title;

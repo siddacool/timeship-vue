@@ -1,12 +1,13 @@
 <template>
   <div class="cities">
-    <ul>
-      <City v-for="town in this.$store.state.cityList" :key="town.city_id" :itr="town.city_id" :name="town.name" :country="town.country_name" :timezone="town.timezone" :date="date"/>
-    </ul>
+    <draggable v-model="cityList" :disabled="false">
+      <City v-for="town in cityList" :key="town.city_id" :itr="town.city_id" :name="town.name" :country="town.country_name" :timezone="town.timezone" :date="date"/>
+    </draggable >
   </div>
 </template>
 
 <script>
+import draggable from 'vuedraggable'
 import DateTime from 'luxon/src/datetime';
 import City from '@/components/City.vue';
 
@@ -14,10 +15,21 @@ export default {
   name: 'Cities',
   components: {
     City,
+    draggable,
   },
   computed: {
     date () {
       return this.$store.state.date !== '---' ? DateTime.fromMillis(this.$store.state.date) : '---';
+    },
+    cityList: {
+      get() {
+        return this.$store.state.cityList;
+      },
+      set(cities) {
+        this.$store.dispatch('updateCities', {
+          cities,
+        });
+      },
     },
   },
 };
