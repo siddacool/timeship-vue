@@ -23,11 +23,7 @@ export default {
   .home {
     background-color: #f5f5f5;
     display: block;
-    height: calc(100vh - 24px);
-    width: 100vw;
-
-    @media only screen and (min-width: 1025px) {
-      height: calc(100vh - 64px);
-    }
+    grid-row-start: 2;
+    grid-row-end: 3;
   }
 </style>

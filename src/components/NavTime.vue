@@ -44,11 +44,10 @@ export default {
     display: block;
     font-size: 14px;
     font-weight: 600;
-    height: 24px;
+    height: 100%;
     width: 100vw;
 
     @media only screen and (min-width: 1025px) {
-      height: 64px;
       font-size: 24px;
     }
   }

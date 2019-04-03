@@ -6,6 +6,7 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     date: '---',
+    controlButton: '',
     cityList: [
       {
         city_id: 'city-1536298962000',
@@ -17,6 +18,62 @@ export default new Vuex.Store({
       },
       {
         city_id: 'city-1536915444000',
+        country: 'EG',
+        country_name: 'Egypt',
+        date: 1553593565000,
+        name: 'alexandria',
+        timezone: '+02:00',
+      },
+      {
+        city_id: 'city-1536q5444000',
+        country: 'EG',
+        country_name: 'Egypt',
+        date: 1553593565000,
+        name: 'alexandria',
+        timezone: '+02:00',
+      },
+      {
+        city_id: 'city-153sss5444000',
+        country: 'EG',
+        country_name: 'Egypt',
+        date: 1553593565000,
+        name: 'alexandria',
+        timezone: '+02:00',
+      },
+      {
+        city_id: 'city-153sssdw5444000',
+        country: 'EG',
+        country_name: 'Egypt',
+        date: 1553593565000,
+        name: 'alexandria',
+        timezone: '+02:00',
+      },
+      {
+        city_id: 'city-153ssssdw5444000',
+        country: 'EG',
+        country_name: 'Egypt',
+        date: 1553593565000,
+        name: 'alexandria',
+        timezone: '+02:00',
+      },
+      {
+        city_id: 'city-153ssssdws5444000',
+        country: 'EG',
+        country_name: 'Egypt',
+        date: 1553593565000,
+        name: 'alexandria',
+        timezone: '+02:00',
+      },
+      {
+        city_id: 'city-153ssssdws5s444000',
+        country: 'EG',
+        country_name: 'Egypt',
+        date: 1553593565000,
+        name: 'alexandria',
+        timezone: '+02:00',
+      },
+      {
+        city_id: 'city-153ssssdssws5s444000',
         country: 'EG',
         country_name: 'Egypt',
         date: 1553593565000,
@@ -51,6 +108,9 @@ export default new Vuex.Store({
 
       state.cityList = sorted; // eslint-disable-line no-param-reassign
     },
+    switchControl(state, control) {
+      state.controlButton = control; // eslint-disable-line no-param-reassign
+    },
   },
   actions: {
     starttime(context) {
@@ -69,6 +129,9 @@ export default new Vuex.Store({
       if (payload && payload.cities && payload.cities.length) {
         context.commit('sortCities', payload.cities);
       }
+    },
+    setControl(context, payload) {
+      context.commit('switchControl', payload.control || '');
     },
   },
 });
