@@ -4,7 +4,9 @@
       <transition name="slide">
       <div class="control-body" v-show="this.$route.name === 'home'">
         <a href="#" class="add-btn" @click.prevent="redirectToSearch">
-          <svg viewBox="0 0 24 24" width="100%" height="100%"><path d="M24 10H14V0h-4v10H0v4h10v10h4V14h10z"></path></svg>
+          <span class="add-btn-round">
+            <svg viewBox="0 0 24 24" width="100%" height="100%"><path d="M24 10H14V0h-4v10H0v4h10v10h4V14h10z"></path></svg>
+          </span>
         </a>
       </div>
       </transition>
@@ -45,7 +47,6 @@ export default {
     width: 100%;
     display: flex;
     justify-content: center;
-    padding-top: 1rem;
     box-shadow: 1px 1px 5px 0px rgba(235, 136, 136, 0.078);
 
     @media only screen and (min-width: 1025px) {
@@ -54,13 +55,18 @@ export default {
   }
 
   .add-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 40px;
-    width: 40px;
-    border-radius: 50%;
-    background: #000;
+    display: inline-block;
+    padding: 1rem;
+
+    .add-btn-round {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 40px;
+      width: 40px;
+      border-radius: 50%;
+      background: #000;
+    }
 
     svg {
       fill: #fff;
