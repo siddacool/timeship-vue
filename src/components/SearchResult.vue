@@ -36,5 +36,16 @@ export default {
 <style scoped lang="scss">
  .search-result {
    padding-top: 1rem;
+
+   .container {
+    height: calc(100vh - 80px);
+    max-height: 600px;
+    overflow-y: overlay;
+
+      @media only screen and (min-width: 1025px) {
+        height: calc(100vh - 200px);
+        max-height: initial;
+      }
+   }
  }
 </style>
