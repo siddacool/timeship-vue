@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <div class="layout" :class="countCities">
+    <div class="layout">
       <!-- <div id="nav">
         <router-link to="/">Home</router-link> |
         <router-link to="/about">About</router-link>
@@ -22,11 +22,6 @@
       NavTime,
       Control,
     },
-    computed: {
-      countCities() {
-        return this.$store.state.cityList.length <= 3 ? 'expand' : '';
-      }
-    }
   };
 </script>
 
@@ -55,13 +50,6 @@
 
     @media only screen and (min-width: 1025px) {
       grid-template-rows: 64px auto 80px;
-    }
-
-    &.expand {
-      grid-template-rows: 64px auto 150px;
-        @media only screen and (min-width: 1025px) {
-        grid-template-rows: 64px auto 150px;
-      }
     }
   }
 
