@@ -1,16 +1,19 @@
 <template>
   <div class="search">
     <SearchBar />
+    <SearchResult />
   </div>
 </template>
 
 <script>
 import SearchBar from '@/components/SearchBar.vue';
+import SearchResult from '@/components/SearchResult.vue';
 
 export default {
   name: 'search',
   components: {
     SearchBar,
+    SearchResult,
   },
 };
 </script>
