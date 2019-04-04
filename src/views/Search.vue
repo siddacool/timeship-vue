@@ -1,10 +1,19 @@
 <template>
   <div class="search">
-    <div class="container">
-      <h1>Add City</h1>
-    </div>
+    <SearchBar />
   </div>
 </template>
+
+<script>
+import SearchBar from '@/components/SearchBar.vue';
+
+export default {
+  name: 'search',
+  components: {
+    SearchBar,
+  },
+};
+</script>
 
 <style scoped lang="scss">
   .search {
@@ -12,5 +21,6 @@
     display: block;
     grid-row-start: 2;
     grid-row-end: 3;
+    padding-top: 8px;
   }
 </style>
