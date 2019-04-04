@@ -1,11 +1,13 @@
 <template>
   <div class="control">
     <div class="container">
-      <div class="control-body">
-        <a href="#" class="add-btn">
+      <transition name="slide">
+      <div class="control-body" v-show="this.$route.name === 'home'">
+        <a href="#" class="add-btn" @click.prevent="redirectToSearch">
           <svg viewBox="0 0 24 24" width="100%" height="100%"><path d="M24 10H14V0h-4v10H0v4h10v10h4V14h10z"></path></svg>
         </a>
       </div>
+      </transition>
     </div>
   </div>
 </template>
@@ -13,6 +15,11 @@
 <script>
 export default {
   name: 'Control',
+  methods: {
+    redirectToSearch() {
+      this.$router.push({ name: 'add' });
+    },
+  }
 };
 </script>
 
@@ -60,5 +67,14 @@ export default {
       width: 16px;
       height: 16px;
     }
+  }
+
+  .slide-enter-active,
+  .slide-leave-active {
+    transition: transform .2s;
+  }
+
+  .slide-enter, .slide-leave-to  {
+    transform: translateY(84px);
   }
 </style>

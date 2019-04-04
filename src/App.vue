@@ -7,7 +7,9 @@
       </div> -->
       <NavTime />
       <router-view/>
-      <Control />
+      <transition name="slide">
+        <Control />
+      </transition>
     </div>
   </div>
 </template>
