@@ -1,19 +1,20 @@
 <template>
   <div class="home">
-    <div class="container">
-      <Cities />
-    </div>
+    <Cities />
+    <Control />
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
 import Cities from '@/components/Cities.vue';
+import Control from '@/components/Control.vue';
 
 export default {
   name: 'home',
   components: {
     Cities,
+    Control,
   },
 };
 </script>

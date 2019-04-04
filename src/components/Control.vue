@@ -1,7 +1,6 @@
 <template>
   <div class="control">
     <div class="container">
-      <transition name="slide">
       <div class="control-body" v-show="this.$route.name === 'home'">
         <a href="#" class="add-btn" @click.prevent="redirectToSearch">
           <span class="add-btn-round">
@@ -9,7 +8,6 @@
           </span>
         </a>
       </div>
-      </transition>
     </div>
   </div>
 </template>
@@ -28,6 +26,10 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
   .control {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100vw;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -73,14 +75,5 @@ export default {
       width: 16px;
       height: 16px;
     }
-  }
-
-  .slide-enter-active,
-  .slide-leave-active {
-    transition: transform .2s;
-  }
-
-  .slide-enter, .slide-leave-to  {
-    transform: translateY(84px);
   }
 </style>

@@ -1,8 +1,10 @@
 <template>
   <div class="cities">
-    <draggable v-model="cityList" :disabled="false">
-      <City v-for="town in cityList" :key="town.city_id" :itr="town.city_id" :name="town.name" :country="town.country_name" :timezone="town.timezone" :date="date"/>
-    </draggable >
+    <div class="container">
+      <draggable v-model="cityList" :disabled="true">
+        <City v-for="town in cityList" :key="town.city_id" :itr="town.city_id" :name="town.name" :country="town.country_name" :timezone="town.timezone" :date="date"/>
+      </draggable >
+    </div>
   </div>
 </template>
 
