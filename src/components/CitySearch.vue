@@ -39,7 +39,7 @@ export default {
     position: relative;
     display: block;
     background-color: #fff;
-    margin-bottom: 6px;
+    margin-bottom: 8px;
     margin-left: 1rem;
     margin-right: 1rem;
     padding: .8rem;
