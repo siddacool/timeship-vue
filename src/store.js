@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+import citySearch from '@/helpers/city-search';
 
 Vue.use(Vuex);
 
@@ -81,24 +82,7 @@ export default new Vuex.Store({
         timezone: '+02:00',
       },
     ],
-    searchCityList: [
-      {
-        city_id: 'city-1536298962000',
-        country: 'IN',
-        country_name: 'India',
-        date: 1553582256000,
-        name: 'Mumbai',
-        timezone: '+05:30',
-      },
-      {
-        city_id: 'city-1536915444000',
-        country: 'EG',
-        country_name: 'Egypt',
-        date: 1553593565000,
-        name: 'alexandria',
-        timezone: '+02:00',
-      },
-    ],
+    searchCityList: [],
   },
   mutations: {
     increment(state) {
@@ -129,6 +113,9 @@ export default new Vuex.Store({
     switchControl(state, control) {
       state.controlButton = control; // eslint-disable-line no-param-reassign
     },
+    populateSearchList(state, cities = []) {
+      state.searchCityList = cities; // eslint-disable-line no-param-reassign
+    },
   },
   actions: {
     starttime(context) {
@@ -150,6 +137,16 @@ export default new Vuex.Store({
     },
     setControl(context, payload) {
       context.commit('switchControl', payload.control || '');
+    },
+    requestCityApi(context, payload) {
+      citySearch(payload.searchTerm)
+        .then((resultArr = []) => {
+          context.commit('populateSearchList', resultArr);
+          console.log(resultArr);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     },
   },
 });
