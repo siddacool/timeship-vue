@@ -5,7 +5,8 @@
         <a href='#' class="back-btn" @click.prevent="redirectToHome">
           <svg viewBox="0 0 24 24" width="100%" height="100%"><path d="M16.67 0l2.83 2.829-9.339 9.175 9.339 9.167L16.67 24 4.5 12.004z"></path></svg>
         </a>
-        <input type="text" class="search-term" ref="searchTerm" v-model="searchTerm" placeholder="Add a City, e.g. Mumbai, New York"
+        <input type="text" class="search-term" ref="searchTerm" placeholder="Add a City, e.g. Mumbai, New York"
+          v-model="searchTerm"
           @blur="searchBlur"
           @focus="searchFocus"
         >
@@ -43,6 +44,26 @@ export default {
     },
     searchFocus() {
       this.isFocusActive = true;
+    },
+    doSearch(val) {
+      this.$store.dispatch('requestCityApi', {
+        searchTerm: val,
+      });
+    },
+  },
+  watch: {
+    searchTerm(val, oldVal) {
+      if (val !== '') {
+        let timeout = null;
+
+        if (timeout) {
+          clearTimeout(timeout);
+        }
+
+        timeout = setTimeout(() => {
+          this.doSearch(val);
+        }, 2000);
+      }
     }
   }
 };
