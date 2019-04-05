@@ -6,7 +6,8 @@
           <svg viewBox="0 0 24 24" width="100%" height="100%"><path d="M16.67 0l2.83 2.829-9.339 9.175 9.339 9.167L16.67 24 4.5 12.004z"></path></svg>
         </a>
         <input type="text" class="search-term" ref="searchTerm" placeholder="Add a City, e.g. Mumbai, New York"
-          v-model="searchTerm"
+          v-model.lazy="searchTerm"
+          v-debounce="delay"
           @blur="searchBlur"
           @focus="searchFocus"
         >
@@ -20,6 +21,7 @@
 
 <script>
 import DateTime from 'luxon/src/datetime';
+import debounce from 'v-debounce';
 
 export default {
   name: 'SearchBar',
@@ -27,6 +29,7 @@ export default {
     return {
       searchTerm: '',
       isFocusActive: false,
+      delay: 2000,
     }
   },
   mounted() {
@@ -45,26 +48,18 @@ export default {
     searchFocus() {
       this.isFocusActive = true;
     },
-    doSearch(val) {
-      this.$store.dispatch('requestCityApi', {
-        searchTerm: val,
-      });
-    },
   },
   watch: {
     searchTerm(val, oldVal) {
       if (val !== '') {
-        let timeout = null;
-
-        if (timeout) {
-          clearTimeout(timeout);
-        }
-
-        timeout = setTimeout(() => {
-          this.doSearch(val);
-        }, 2000);
+        this.$store.dispatch('requestCityApi', {
+          searchTerm: val,
+       });
       }
     }
+  },
+  directives: {
+    debounce,
   }
 };
 </script>

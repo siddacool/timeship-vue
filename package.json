@@ -11,6 +11,7 @@
     "luxon": "^1.11.4",
     "purple-maps-api": "^0.0.9",
     "register-service-worker": "^1.6.2",
+    "v-debounce": "^0.1.2",
     "vue": "^2.6.6",
     "vue-directive-long-press": "^1.1.0",
     "vue-router": "^3.0.1",
