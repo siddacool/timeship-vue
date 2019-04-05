@@ -1,5 +1,5 @@
 import Vue from 'vue';
-import LongPress from 'vue-directive-long-press'
+import LongPress from 'vue-directive-long-press';
 import App from './App.vue';
 import router from './router';
 import store from './store';
