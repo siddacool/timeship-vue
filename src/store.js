@@ -1,8 +1,17 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+import VuexPersist from 'vuex-persist';
 import citySearch from '@/helpers/city-search';
 
 Vue.use(Vuex);
+
+const vuexPersist = new VuexPersist({
+  key: 'timeship-vue-storage',
+  storage: localStorage,
+  reducer: state => ({
+    cityList: state.cityList,
+  }),
+});
 
 export default new Vuex.Store({
   state: {
@@ -95,4 +104,5 @@ export default new Vuex.Store({
       context.commit('cleanSearch');
     },
   },
+  plugins: [vuexPersist.plugin],
 });
