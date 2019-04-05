@@ -15,6 +15,9 @@ export default {
     SearchBar,
     SearchResult,
   },
+  mounted() {
+    this.$store.dispatch('clearSearchList');
+  },
 };
 </script>
 

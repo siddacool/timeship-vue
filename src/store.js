@@ -51,6 +51,9 @@ export default new Vuex.Store({
         state.cityList.push(cityInSearchState);
       }
     },
+    cleanSearch(state) {
+      state.searchCityList = []; // eslint-disable-line no-param-reassign
+    },
   },
   actions: {
     starttime(context) {
@@ -87,6 +90,9 @@ export default new Vuex.Store({
       if (cityId) {
         context.commit('pushNewCity', cityId);
       }
+    },
+    clearSearchList(context) {
+      context.commit('cleanSearch');
     },
   },
 });
