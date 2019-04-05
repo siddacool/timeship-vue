@@ -8,80 +8,7 @@ export default new Vuex.Store({
   state: {
     date: '---',
     controlButton: '',
-    cityList: [
-      {
-        city_id: 'city-1536298962000',
-        country: 'IN',
-        country_name: 'India',
-        date: 1553582256000,
-        name: 'Mumbai',
-        timezone: '+05:30',
-      },
-      {
-        city_id: 'city-1536915444000',
-        country: 'EG',
-        country_name: 'Egypt',
-        date: 1553593565000,
-        name: 'alexandria',
-        timezone: '+02:00',
-      },
-      {
-        city_id: 'city-1536q5444000',
-        country: 'EG',
-        country_name: 'Egypt',
-        date: 1553593565000,
-        name: 'alexandria',
-        timezone: '+02:00',
-      },
-      {
-        city_id: 'city-153sss5444000',
-        country: 'EG',
-        country_name: 'Egypt',
-        date: 1553593565000,
-        name: 'alexandria',
-        timezone: '+02:00',
-      },
-      {
-        city_id: 'city-153sssdw5444000',
-        country: 'EG',
-        country_name: 'Egypt',
-        date: 1553593565000,
-        name: 'alexandria',
-        timezone: '+02:00',
-      },
-      {
-        city_id: 'city-153ssssdw5444000',
-        country: 'EG',
-        country_name: 'Egypt',
-        date: 1553593565000,
-        name: 'alexandria',
-        timezone: '+02:00',
-      },
-      {
-        city_id: 'city-153ssssdws5444000',
-        country: 'EG',
-        country_name: 'Egypt',
-        date: 1553593565000,
-        name: 'alexandria',
-        timezone: '+02:00',
-      },
-      {
-        city_id: 'city-153ssssdws5s444000',
-        country: 'EG',
-        country_name: 'Egypt',
-        date: 1553593565000,
-        name: 'alexandria',
-        timezone: '+02:00',
-      },
-      {
-        city_id: 'city-153ssssdssws5s444000',
-        country: 'EG',
-        country_name: 'Egypt',
-        date: 1553593565000,
-        name: 'alexandria',
-        timezone: '+02:00',
-      },
-    ],
+    cityList: [],
     searchCityList: [],
   },
   mutations: {
@@ -116,6 +43,14 @@ export default new Vuex.Store({
     populateSearchList(state, cities = []) {
       state.searchCityList = cities; // eslint-disable-line no-param-reassign
     },
+    pushNewCity(state, cityId) {
+      const cityInSearchState = state.searchCityList.find(city => city.city_id === cityId) || null;
+      const isAlreadyExist = state.cityList.find(city => city.city_id === cityId) || null;
+
+      if (cityInSearchState && !isAlreadyExist) {
+        state.cityList.push(cityInSearchState);
+      }
+    },
   },
   actions: {
     starttime(context) {
@@ -147,6 +82,11 @@ export default new Vuex.Store({
         .catch((err) => {
           console.log(err);
         });
+    },
+    addCity(context, { cityId }) {
+      if (cityId) {
+        context.commit('pushNewCity', cityId);
+      }
     },
   },
 });
