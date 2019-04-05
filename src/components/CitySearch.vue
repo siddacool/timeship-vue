@@ -38,6 +38,8 @@ export default {
       this.$store.dispatch('addCity', {
         cityId: itr,
       });
+
+      this.$router.push({ name: 'home' });
     }
   }
 };
