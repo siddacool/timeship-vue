@@ -19,7 +19,6 @@
 <script>
 import draggable from 'vuedraggable'
 import DateTime from 'luxon/src/datetime';
-import LongPress from 'vue-directive-long-press';
 import City from '@/components/City.vue';
 
 export default {
@@ -51,9 +50,6 @@ export default {
       this.$store.dispatch('toggleEditMode', 'on');
       console.log('deep-start');
     },
-  },
-  directives: {
-    'long-press': LongPress,
   },
 };
 </script>
