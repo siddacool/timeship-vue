@@ -1,7 +1,7 @@
 <template>
   <div class="control">
     <div class="container">
-      <div class="control-body" v-show="this.$route.name === 'home'">
+      <div class="control-body">
         <a href="#" class="add-btn" @click.prevent="redirectToSearch">
           <span class="add-btn-round">
             <svg viewBox="0 0 24 24" width="100%" height="100%"><path d="M24 10H14V0h-4v10H0v4h10v10h4V14h10z"></path></svg>
