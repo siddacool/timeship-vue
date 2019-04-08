@@ -2,8 +2,13 @@
   <div class="control">
     <div class="container">
       <div class="control-body">
-        <a href="#" class="add-btn" @click.prevent="redirectToSearch">
-          <span class="add-btn-round">
+        <a href="#" class="btn done-btn" @click.prevent="turnOffEditMode" v-if="this.$store.state.isEditMode">
+          <div class="btn__round">
+            <svg width="100%" height="100%" viewBox="0 0 24 24"><path d="M9 22l-10-10.598 2.798-2.859 7.149 7.473 13.144-14.016 2.909 2.806z"/></svg>
+          </div>
+        </a>
+        <a href="#" class="btn add-btn" @click.prevent="redirectToSearch" v-else>
+          <span class="btn__round">
             <svg viewBox="0 0 24 24" width="100%" height="100%"><path d="M24 10H14V0h-4v10H0v4h10v10h4V14h10z"></path></svg>
           </span>
         </a>
@@ -19,6 +24,9 @@ export default {
     redirectToSearch() {
       this.$router.push({ name: 'add' });
     },
+    turnOffEditMode() {
+      this.$store.dispatch('toggleEditMode', 'off');
+    }
   }
 };
 </script>
@@ -56,11 +64,11 @@ export default {
     }
   }
 
-  .add-btn {
+  .btn {
     display: inline-block;
     padding: 1rem;
 
-    .add-btn-round {
+    .btn__round {
       display: flex;
       align-items: center;
       justify-content: center;
