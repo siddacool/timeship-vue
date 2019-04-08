@@ -63,6 +63,6 @@ export default {
   .cities {
     padding-top: 8px;
     max-height: calc(100vh - 145px);
-    overflow-y: overlay;
+    overflow-y: auto;
   }
 </style>
