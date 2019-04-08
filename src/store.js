@@ -19,6 +19,7 @@ export default new Vuex.Store({
     controlButton: '',
     cityList: [],
     searchCityList: [],
+    isEditMode: false,
   },
   mutations: {
     increment(state) {
@@ -63,6 +64,12 @@ export default new Vuex.Store({
     cleanSearch(state) {
       state.searchCityList = []; // eslint-disable-line no-param-reassign
     },
+    enableEditMode(state) {
+      state.isEditMode = true; // eslint-disable-line no-param-reassign
+    },
+    disableEditMode(state) {
+      state.isEditMode = false; // eslint-disable-line no-param-reassign
+    },
   },
   actions: {
     starttime(context) {
@@ -102,6 +109,13 @@ export default new Vuex.Store({
     },
     clearSearchList(context) {
       context.commit('cleanSearch');
+    },
+    toggleEditMode(context, payload = 'off') {
+      if (payload === 'on') {
+        context.commit('enableEditMode');
+      } else {
+        context.commit('disableEditMode');
+      }
     },
   },
   plugins: [vuexPersist.plugin],
