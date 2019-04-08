@@ -13,6 +13,9 @@ import DateTime from 'luxon/src/datetime';
 
 export default {
   name: 'NavTime',
+  props: [
+    'timer',
+  ],
   data() {
     return {
       utcOffSet: '+00:00',
@@ -32,7 +35,9 @@ export default {
     },
   },
   mounted() {
-    this.$store.dispatch('starttime');
+    if (this.timer) {
+      this.$store.dispatch('starttime');
+    }
   }
 };
 </script>

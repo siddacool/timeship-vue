@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div class="layout">
-      <NavTime />
+      <NavTime :timer="isTimerOn"/>
       <router-view/>
     </div>
   </div>
@@ -14,6 +14,11 @@
     name: 'app',
     components: {
       NavTime,
+    },
+    computed: {
+      isTimerOn () {
+        return this.$route.query.timer &&  this.$route.query.timer === 'off' ? false : true;
+      }
     },
   };
 </script>
