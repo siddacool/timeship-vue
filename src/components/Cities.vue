@@ -43,7 +43,7 @@ export default {
     },
     cityList: {
       get() {
-        return this.$store.state.cityList;
+        return this.$store.state.isEditMode ? this.sortableCities : this.$store.state.cityList;
       },
       set(cities) {
         this.sortableCities = cities;
