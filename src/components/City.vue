@@ -22,7 +22,6 @@ export default {
     'country',
     'name',
     'timezone',
-    'countryCode',
     'date',
     'itr',
   ],
