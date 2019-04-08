@@ -14,6 +14,7 @@
     "v-debounce": "^0.1.2",
     "vue": "^2.6.6",
     "vue-directive-long-press": "^1.1.0",
+    "vue-pressure": "^2.1.0",
     "vue-router": "^3.0.1",
     "vue-touch": "^2.0.0-beta.4",
     "vuedraggable": "^2.20.0",

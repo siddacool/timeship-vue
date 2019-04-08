@@ -1,8 +1,7 @@
 <template>
   <div class="cities"
-    v-long-press="500"
-    @long-press-start="onLongPressStart"
-    @long-press-stop="onLongPressStop">
+    v-pressure
+    @pressureDeepStart="handlePressureStartDeepPress">
     <div class="container">
       <draggable v-model="cityList" :disabled="!this.$store.state.isEditMode">
         <City v-for="town in cityList"
@@ -48,13 +47,10 @@ export default {
     },
   },
   methods: {
-    onLongPressStart () {
+    handlePressureStartDeepPress() {
       this.$store.dispatch('toggleEditMode', 'on');
-      console.log('start');
+      console.log('deep-start');
     },
-    onLongPressStop () {
-      console.log('end');
-    }
   },
   directives: {
     'long-press': LongPress,
