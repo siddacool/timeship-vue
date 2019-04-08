@@ -3,7 +3,7 @@
     v-pressure
     @pressureDeepStart="handlePressureStartDeepPress">
     <div class="container">
-      <draggable v-model="cityList" :disabled="!this.$store.state.isEditMode">
+      <draggable v-model="cityList" :disabled="!this.$store.state.isEditMode" handle=".handle">
         <City v-for="town in cityList"
           :key="town.city_id"
           :itr="town.city_id"
