@@ -29,11 +29,6 @@ export default {
     City,
     draggable,
   },
-  data() {
-    return {
-      sortableCities: [],
-    }
-  },
   mounted() {
     this.sortableCities = this.$store.state.cityList;
   },
@@ -43,13 +38,12 @@ export default {
     },
     cityList: {
       get() {
-        return this.$store.state.isEditMode ? this.sortableCities : this.$store.state.cityList;
+        return this.$store.state.cityList;
       },
       set(cities) {
-        this.sortableCities = cities;
-        // this.$store.dispatch('updateCities', {
-        //   cities,
-        // });
+        this.$store.dispatch('updateCities', {
+          cities,
+        });
       },
     },
   },
