@@ -4,7 +4,7 @@ export default searchTerm => new Promise((resolve, reject) => {
   GetAllPlaces()
     .then((allPlaces) => {
       const countries = allPlaces.filter(country => country.country_id);
-      const cities = allPlaces.filter(city => city.city_id && city.name.toLowerCase().startsWith(searchTerm));
+      const cities = allPlaces.filter(city => city.city_id && city.name.toLowerCase().indexOf(searchTerm.trim().toLowerCase()) === 0);
 
       cities.forEach((city) => {
         const { name, country_code } = countries.find(c => c.country_code === city.country_code);
