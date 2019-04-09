@@ -76,17 +76,7 @@ export default {
     margin-bottom: 4px;
 
     .name {
-      font-size: 20px;
-      text-transform: capitalize;
-      word-break: break-word;
-
-      @media only screen and (min-width: 800px) {
-        font-size: 25px;
-      }
-    }
-
-    .country {
-      font-size: 18px;
+      font-size: 17px;
       text-transform: capitalize;
       word-break: break-word;
 
@@ -111,7 +101,7 @@ export default {
     }
 
     .date-month {
-      font-size: 20px;
+      font-size: 14px;
 
       @media only screen and (min-width: 800px) {
         font-size: 22px;
