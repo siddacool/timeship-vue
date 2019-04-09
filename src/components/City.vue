@@ -69,6 +69,10 @@ export default {
 
     &.edit-mode {
       padding-left: 2rem;
+
+      &:hover {
+        box-shadow: 1px 1px 5px 5px rgba(224, 224, 224, 0.28);
+      }
     }
   }
 
