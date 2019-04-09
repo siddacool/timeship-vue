@@ -112,9 +112,13 @@ export default {
   .close {
     cursor: pointer;
     position: absolute;
-    display: inline-block;
-    right: 8px;
-    top: 8px;
+    display: flex;
+    right: 0;
+    top: 0;
+    width: 2.5rem;
+    height: 2.5rem;
+    justify-content: center;
+    align-items: center;
     svg {
       width: 16px;
       height: 16px;
