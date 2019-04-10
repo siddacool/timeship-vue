@@ -1,7 +1,5 @@
 <template>
-  <div class="cities"
-    v-pressure
-    @pressureDeepStart="handlePressureStartDeepPress">
+  <div class="cities">
     <div class="container">
       <draggable v-model="cityList" :disabled="!this.$store.state.isEditMode" handle=".handle">
         <City v-for="town in cityList"
@@ -43,12 +41,6 @@ export default {
           cities,
         });
       },
-    },
-  },
-  methods: {
-    handlePressureStartDeepPress() {
-      this.$store.dispatch('toggleEditMode', 'on');
-      console.log('deep-start');
     },
   },
 };
