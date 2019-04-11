@@ -1,7 +1,7 @@
 <template>
   <li class="city" :class="{'edit-mode': this.$store.state.isEditMode}" v-touch:longtap="onlongpress">
     <a href="#" class="handle" v-show="this.$store.state.isEditMode">
-      <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24"><path d="M12 18c1.657 0 3 1.343 3 3s-1.343 3-3 3-3-1.343-3-3 1.343-3 3-3zm0-9c1.657 0 3 1.343 3 3s-1.343 3-3 3-3-1.343-3-3 1.343-3 3-3zm0-9c1.657 0 3 1.343 3 3s-1.343 3-3 3-3-1.343-3-3 1.343-3 3-3z"/></svg>
+      <IconSet name="handle" />
     </a>
     <div class="location">
       <span class="name">{{ name }}</span>
@@ -11,13 +11,14 @@
       <span class="date-month">{{ getDate | makeDay }}</span>
     </div>
     <a href="#" class="close" @click.prevent="deleteCity(itr)" v-show="this.$store.state.isEditMode">
-      <svg viewBox="0 0 24 24" width="100%" height="100%"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.5 16.084L16.097 17.5l-4.09-4.096L7.905 17.5 6.5 16.095l4.093-4.092L6.5 7.905 7.905 6.5l4.088 4.089L16.084 6.5 17.5 7.903l-4.092 4.087 4.092 4.094z"></path></svg>
+      <IconSet name="close" />
     </a>
   </li>
 </template>
 
 <script>
 import DateTime from 'luxon/src/datetime';
+import IconSet from '@/components/IconSet.vue';
 
 export default {
   name: 'City',
@@ -53,6 +54,9 @@ export default {
     onlongpress() {
       this.$store.dispatch('toggleEditMode', 'on');
     }
+  },
+  components: {
+    IconSet,
   }
 };
 </script>
