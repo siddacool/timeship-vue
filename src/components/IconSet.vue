@@ -24,6 +24,12 @@ export default {
       type: String,
       required: true,
     },
+    dimentions: {
+      type: String,
+      default() {
+        return '24px';
+      },
+    },
   },
   data() {
     return {
