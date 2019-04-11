@@ -10,6 +10,7 @@
           :timezone="town.timezone"
           :date="date"/>
       </draggable >
+      <Tooltip v-if="totalCities < 1" :pin="tooltipPin" :name="tooltipClass" :bounce="tooltipBounce">{{ tooltipMsg }}</Tooltip>
     </div>
   </div>
 </template>
@@ -18,12 +19,22 @@
 import draggable from 'vuedraggable'
 import DateTime from 'luxon/src/datetime';
 import City from '@/components/City.vue';
+import Tooltip from '@/components/Tooltip.vue';
 
 export default {
   name: 'Cities',
   components: {
     City,
     draggable,
+    Tooltip,
+  },
+  data() {
+    return {
+      tooltipMsg: 'Add New City',
+      tooltipPin: 'bottom',
+      tooltipClass: 'add-tooltip',
+      tooltipBounce: true,
+    }
   },
   mounted() {
     this.sortableCities = this.$store.state.cityList;
@@ -31,6 +42,9 @@ export default {
   computed: {
     date () {
       return this.$store.state.date !== '---' ? DateTime.fromMillis(this.$store.state.date) : '---';
+    },
+    totalCities() {
+      return this.$store.state.cityList.length;
     },
     cityList: {
       get() {
@@ -52,5 +66,10 @@ export default {
     padding-top: 8px;
     max-height: calc(100vh - 145px);
     overflow-y: auto;
+  }
+
+  .add-tooltip {
+    bottom: 150px;
+    left: calc(50vw - 55px);
   }
 </style>
