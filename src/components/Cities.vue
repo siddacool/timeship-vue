@@ -2,9 +2,10 @@
   <div class="cities">
     <div class="container">
       <draggable v-model="cityList" :disabled="!this.$store.state.isEditMode" handle=".handle">
-        <City v-for="town in cityList"
+        <City v-for="(town, index) in cityList"
           :key="town.city_id"
           :itr="town.city_id"
+          :pos="index"
           :name="town.name"
           :country="town.country_name"
           :timezone="town.timezone"
@@ -12,10 +13,9 @@
       </draggable >
       <Tooltip v-if="this.$store.getters.totalCities < 1 && !this.$store.state.isEditMode" pin="bottom" name="add-tooltip">Add New City</Tooltip>
       <Tooltip v-if="this.$store.getters.totalCities === 1 && !this.$store.state.isEditMode" pin="bottom" name="add-another-tooltip">Add Another City</Tooltip>
-      <Tooltip v-if="this.$store.getters.totalCities === 2 && !this.$store.state.isEditMode" pin="top" name="edit-mode-tooltip">Long Press and Release, to Edit</Tooltip>
-      <Tooltip v-if="this.$store.getters.totalCities === 2 && this.$store.state.isEditMode" pin="top" name="sort-tooltip">Sort Using ...</Tooltip>
-      <Tooltip v-if="this.$store.getters.totalCities === 2 && this.$store.state.isEditMode" pin="top" name="remove-tooltip">Use x to delete</Tooltip>
-      <Tooltip v-if="this.$store.getters.totalCities < 3 && this.$store.state.isEditMode" pin="bottom" name="accept-tooltip">Deactivate Edit Mode</Tooltip>
+      <Tooltip v-if="this.$store.getters.totalCities === 2 && !this.$store.state.isEditMode" pin="top" name="edit-mode-tooltip">Long Press a city and Release, to activate edit mode</Tooltip>
+      <Tooltip v-if="this.$store.getters.totalCities === 2 && this.$store.state.isEditMode && this.$store.state.isSortTutorial" name="sort-tooltip">Sort Using Handle</Tooltip>
+      <Tooltip v-if="this.$store.getters.totalCities < 3 && this.$store.state.isEditMode && !this.$store.state.isSortTutorial && this.$store.state.isDeleteTutorial" pin="bottom" name="accept-tooltip">Deactivate Edit Mode</Tooltip>
     </div>
   </div>
 </template>
@@ -53,6 +53,13 @@ export default {
       },
     },
   },
+  watch: {
+    cityList(newList, oldList) {
+      if (newList.length === oldList.length && newList !== oldList) {
+        this.$store.dispatch('toggleSortTutorial', 'off');
+      }
+    }
+  },
 };
 </script>
 
@@ -67,7 +74,7 @@ export default {
   .add-tooltip,
   .add-another-tooltip,
   .accept-tooltip {
-    bottom: 150px;
+    bottom: 120px;
   }
 
   .add-tooltip {
@@ -79,8 +86,8 @@ export default {
   }
 
   .edit-mode-tooltip {
-    top: 300px;
-    left: calc(50vw - 110px);
+    top: 350px;
+    left: calc(50vw - 171px);
   }
 
   .sort-tooltip,

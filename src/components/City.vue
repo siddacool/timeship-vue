@@ -1,6 +1,6 @@
 <template>
   <li class="city" :class="{'edit-mode': this.$store.state.isEditMode}" v-touch:longtap="onlongpress">
-    <a href="#" class="handle" v-show="this.$store.state.isEditMode">
+    <a href="#" class="handle" v-show="this.$store.state.isEditMode" :class="{pulse: isHandlePulse}">
       <IconSet name="handle" />
     </a>
     <div class="location">
@@ -28,11 +28,15 @@ export default {
     'timezone',
     'date',
     'itr',
+    'pos',
   ],
   computed: {
     getDate () {
       return this.date !== '---' ? this.date.setZone(`UTC${this.timezone}`) : '---';
-    }
+    },
+    isHandlePulse() {
+      return this.pos === 1 && this.$store.getters.totalCities < 3 && this.$store.state.isEditMode;
+    },
   },
   filters: {
     makeDay(date) {
@@ -80,6 +84,19 @@ export default {
       &:hover {
         box-shadow: 1px 1px 5px 5px rgba(224, 224, 224, 0.28);
       }
+    }
+
+    @keyframes shadow-pulse {
+      0% {
+        box-shadow: 0 0 0 0px rgba(0, 0, 0, 0.2);
+      }
+      100% {
+        box-shadow: 0 0 0 35px rgba(0, 0, 0, 0);
+      }
+    }
+
+    &.pulse {
+      animation: shadow-pulse 1s infinite;
     }
   }
 
@@ -147,6 +164,11 @@ export default {
     width: 2rem;
     padding-left: .5rem;
     opacity: .4;
+
+    &.pulse {
+      animation: shadow-pulse 1s infinite;
+    }
+
     svg {
       width: 16px;
       height: 16px;
