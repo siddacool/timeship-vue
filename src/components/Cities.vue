@@ -10,12 +10,12 @@
           :timezone="town.timezone"
           :date="date"/>
       </draggable >
-      <Tooltip v-if="this.$store.getters.totalCities < 1 && !this.$store.state.isEditMode" pin="bottom" name="add-tooltip" :bounce="tooltipBounce">Add New City</Tooltip>
-      <Tooltip v-if="this.$store.getters.totalCities === 1 && !this.$store.state.isEditMode" pin="bottom" name="add-another-tooltip" :bounce="tooltipBounce">Add Another City</Tooltip>
-      <Tooltip v-if="this.$store.getters.totalCities === 2 && !this.$store.state.isEditMode" pin="top" name="edit-mode-tooltip" :bounce="tooltipBounce">Long Press and Release, to Edit</Tooltip>
-      <Tooltip v-if="this.$store.getters.totalCities === 2 && this.$store.state.isEditMode" pin="top" name="sort-tooltip" :bounce="tooltipBounce">Sort Using ...</Tooltip>
-      <Tooltip v-if="this.$store.getters.totalCities === 2 && this.$store.state.isEditMode" pin="top" name="remove-tooltip" :bounce="tooltipBounce">Use x to delete</Tooltip>
-      <Tooltip v-if="this.$store.getters.totalCities < 3 && this.$store.state.isEditMode" pin="bottom" name="accept-tooltip" :bounce="tooltipBounce">Deactivate Edit Mode</Tooltip>
+      <Tooltip v-if="this.$store.getters.totalCities < 1 && !this.$store.state.isEditMode" pin="bottom" name="add-tooltip">Add New City</Tooltip>
+      <Tooltip v-if="this.$store.getters.totalCities === 1 && !this.$store.state.isEditMode" pin="bottom" name="add-another-tooltip">Add Another City</Tooltip>
+      <Tooltip v-if="this.$store.getters.totalCities === 2 && !this.$store.state.isEditMode" pin="top" name="edit-mode-tooltip">Long Press and Release, to Edit</Tooltip>
+      <Tooltip v-if="this.$store.getters.totalCities === 2 && this.$store.state.isEditMode" pin="top" name="sort-tooltip">Sort Using ...</Tooltip>
+      <Tooltip v-if="this.$store.getters.totalCities === 2 && this.$store.state.isEditMode" pin="top" name="remove-tooltip">Use x to delete</Tooltip>
+      <Tooltip v-if="this.$store.getters.totalCities < 3 && this.$store.state.isEditMode" pin="bottom" name="accept-tooltip">Deactivate Edit Mode</Tooltip>
     </div>
   </div>
 </template>
@@ -34,11 +34,6 @@ export default {
     draggable,
     Tooltip,
     IconSet,
-  },
-  data() {
-    return {
-      tooltipBounce: true,
-    }
   },
   mounted() {
     this.sortableCities = this.$store.state.cityList;
