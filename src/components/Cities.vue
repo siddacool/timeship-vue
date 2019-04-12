@@ -10,12 +10,12 @@
           :timezone="town.timezone"
           :date="date"/>
       </draggable >
-      <Tooltip v-if="totalCities < 1 && !this.$store.state.isEditMode" pin="bottom" name="add-tooltip" :bounce="tooltipBounce">Add New City</Tooltip>
-      <Tooltip v-if="totalCities === 1 && !this.$store.state.isEditMode" pin="bottom" name="add-another-tooltip" :bounce="tooltipBounce">Add Another City</Tooltip>
-      <Tooltip v-if="totalCities === 2 && !this.$store.state.isEditMode" pin="top" name="edit-mode-tooltip" :bounce="tooltipBounce">Long Press and Release, to Edit</Tooltip>
-      <Tooltip v-if="totalCities === 2 && this.$store.state.isEditMode" pin="top" name="sort-tooltip" :bounce="tooltipBounce">Sort Using ...</Tooltip>
-      <Tooltip v-if="totalCities === 2 && this.$store.state.isEditMode" pin="top" name="remove-tooltip" :bounce="tooltipBounce">Use x to delete</Tooltip>
-      <Tooltip v-if="totalCities < 3 && this.$store.state.isEditMode" pin="bottom" name="accept-tooltip" :bounce="tooltipBounce">Deactivate Edit Mode</Tooltip>
+      <Tooltip v-if="this.$store.getters.totalCities < 1 && !this.$store.state.isEditMode" pin="bottom" name="add-tooltip" :bounce="tooltipBounce">Add New City</Tooltip>
+      <Tooltip v-if="this.$store.getters.totalCities === 1 && !this.$store.state.isEditMode" pin="bottom" name="add-another-tooltip" :bounce="tooltipBounce">Add Another City</Tooltip>
+      <Tooltip v-if="this.$store.getters.totalCities === 2 && !this.$store.state.isEditMode" pin="top" name="edit-mode-tooltip" :bounce="tooltipBounce">Long Press and Release, to Edit</Tooltip>
+      <Tooltip v-if="this.$store.getters.totalCities === 2 && this.$store.state.isEditMode" pin="top" name="sort-tooltip" :bounce="tooltipBounce">Sort Using ...</Tooltip>
+      <Tooltip v-if="this.$store.getters.totalCities === 2 && this.$store.state.isEditMode" pin="top" name="remove-tooltip" :bounce="tooltipBounce">Use x to delete</Tooltip>
+      <Tooltip v-if="this.$store.getters.totalCities < 3 && this.$store.state.isEditMode" pin="bottom" name="accept-tooltip" :bounce="tooltipBounce">Deactivate Edit Mode</Tooltip>
     </div>
   </div>
 </template>
@@ -46,9 +46,6 @@ export default {
   computed: {
     date () {
       return this.$store.state.date !== '---' ? DateTime.fromMillis(this.$store.state.date) : '---';
-    },
-    totalCities() {
-      return this.$store.state.cityList.length;
     },
     cityList: {
       get() {
