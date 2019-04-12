@@ -118,5 +118,10 @@ export default new Vuex.Store({
       }
     },
   },
+  getters: {
+    totalCities(state) {
+      return state.cityList.length;
+    },
+  },
   plugins: [vuexPersist.plugin],
 });
