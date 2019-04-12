@@ -8,7 +8,7 @@
           </div>
         </a>
         <a href="#" class="btn add-btn" @click.prevent="redirectToSearch" v-else>
-          <span class="btn__round">
+          <span class="btn__round" :class="{pulse: isPulse}">
             <svg viewBox="0 0 24 24" width="100%" height="100%"><path d="M24 10H14V0h-4v10H0v4h10v10h4V14h10z"></path></svg>
           </span>
         </a>
@@ -20,6 +20,11 @@
 <script>
 export default {
   name: 'Control',
+  computed: {
+    isPulse() {
+      return this.$store.getters.totalCities < 2 && !this.$store.state.isEditMode;
+    }
+  },
   methods: {
     redirectToSearch() {
       this.$router.push({ name: 'add' });
@@ -64,6 +69,15 @@ export default {
     }
   }
 
+  @keyframes shadow-pulse {
+    0% {
+      box-shadow: 0 0 0 0px rgba(0, 0, 0, 0.2);
+    }
+    100% {
+      box-shadow: 0 0 0 35px rgba(0, 0, 0, 0);
+    }
+  }
+
   .btn {
     display: inline-block;
     padding: 1rem;
@@ -76,6 +90,10 @@ export default {
       width: 40px;
       border-radius: 50%;
       background: #000;
+
+       &.pulse {
+        animation: shadow-pulse 1s infinite;
+      }
     }
 
     svg {
