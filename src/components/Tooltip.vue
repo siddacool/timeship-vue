@@ -2,7 +2,7 @@
   <div class="tooltip" :class="name">
     <div class="holder">
       <slot></slot>
-      <div class="pin" :class="[pin, { bounce : bounce }]">
+      <div class="pin" :class="pin">
         <IconSet name="hollowArrow" />
       </div>
     </div>
@@ -19,13 +19,12 @@ export default {
       type: String,
       required: true,
     },
-    bounce: Boolean,
     pin: {
       default() {
-        return 'bottom';
+        return 'none';
       },
       validator (value) {
-        return ['top', 'right', 'bottom', 'left'].indexOf(value) !== -1;
+        return ['top', 'right', 'bottom', 'left', 'none'].indexOf(value) !== -1;
       }
     }
   },
@@ -63,44 +62,15 @@ export default {
         width: 18px;
       }
 
-      @keyframes bounceBottom {
-        0%   {bottom: -30px;}
-        100% {bottom: -60px;}
-      }
-
-      @keyframes bounceTop {
-        0%   {top: -30px;}
-        100% {top: -60px;}
-      }
-
-      @keyframes bounceLeft {
-        0%   {left: -41px;}
-        100% {left: -71px;}
-      }
-
-      @keyframes bounceRight {
-        0%   {right: -41px;}
-        100% {right: -71px;}
-      }
-
-
       &.bottom {
         bottom: -30px;
         width: 100%;
-
-        &.bounce {
-          animation: bounceBottom 600ms cubic-bezier(0.47, 0, 0.75, 0.72) infinite;
-        }
       }
 
       &.top {
         top: -30px;
         width: 100%;
         transform: scaleY(-1);
-
-        &.bounce {
-          animation: bounceTop 600ms cubic-bezier(0.47, 0, 0.75, 0.72) infinite;
-        }
       }
 
       &.right {
@@ -109,10 +79,6 @@ export default {
         left: initial;
         right: -41px;
         transform: rotate(-90deg);
-
-        &.bounce {
-          animation: bounceRight 600ms cubic-bezier(0.47, 0, 0.75, 0.72) infinite;
-        }
       }
 
       &.left {
@@ -120,10 +86,10 @@ export default {
         height: 100%;
         left: -41px;
         transform: rotate(90deg);
+      }
 
-        &.bounce {
-          animation: bounceLeft 600ms cubic-bezier(0.47, 0, 0.75, 0.72) infinite;
-        }
+      &.none {
+        display: none;
       }
     }
   }
