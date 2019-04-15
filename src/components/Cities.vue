@@ -14,8 +14,8 @@
       <Tooltip v-if="this.$store.getters.totalCities < 1 && !this.$store.state.isEditMode" pin="bottom" name="add-tooltip">Add New City</Tooltip>
       <Tooltip v-if="this.$store.getters.totalCities === 1 && !this.$store.state.isEditMode" pin="bottom" name="add-another-tooltip">Add Another City</Tooltip>
       <Tooltip v-if="this.$store.getters.totalCities === 2 && !this.$store.state.isEditMode" pin="top" name="edit-mode-tooltip">Long Press a city and Release, to activate edit mode</Tooltip>
-      <Tooltip v-if="this.$store.getters.totalCities === 2 && this.$store.state.isEditMode && this.$store.state.isSortTutorial" name="sort-tooltip">Sort Using Handle</Tooltip>
-      <Tooltip v-if="this.$store.getters.totalCities < 3 && this.$store.state.isEditMode && !this.$store.state.isSortTutorial && this.$store.state.isDeleteTutorial" pin="bottom" name="accept-tooltip">Deactivate Edit Mode</Tooltip>
+      <Tooltip v-if="this.$store.getters.totalCities === 2 && this.$store.state.isEditMode && this.$store.state.isSortTutorial" pin="top" name="sort-tooltip">Sort Using Handle</Tooltip>
+      <Tooltip v-if="this.$store.getters.totalCities < 3 && this.$store.state.isEditMode && !this.$store.state.isSortTutorial" pin="bottom" name="accept-tooltip">Deactivate Edit Mode</Tooltip>
     </div>
   </div>
 </template>
