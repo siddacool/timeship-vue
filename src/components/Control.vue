@@ -46,6 +46,9 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
+  // colors list
+  @import '../styles/colors';
+
   .control {
     position: fixed;
     bottom: 0;
@@ -108,6 +111,18 @@ export default {
       fill: #fff;
       width: 16px;
       height: 16px;
+    }
+  }
+
+  .add-btn {
+    .btn__round {
+      background: $base-color;
+    }
+  }
+
+  .done-btn {
+    .btn__round {
+      background: $safe-color;
     }
   }
 </style>
