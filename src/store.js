@@ -21,7 +21,6 @@ export default new Vuex.Store({
     searchCityList: [],
     isEditMode: false,
     isSortTutorial: true,
-    isDeleteTutorial: true,
   },
   mutations: {
     increment(state) {
@@ -78,12 +77,6 @@ export default new Vuex.Store({
     disableSortTutorial(state) {
       state.isSortTutorial = false; // eslint-disable-line no-param-reassign
     },
-    enableDeleteTutorial(state) {
-      state.isDeleteTutorial = true; // eslint-disable-line no-param-reassign
-    },
-    disableDeleteTutorial(state) {
-      state.isDeleteTutorial = false; // eslint-disable-line no-param-reassign
-    },
   },
   actions: {
     starttime(context) {
@@ -136,13 +129,6 @@ export default new Vuex.Store({
         context.commit('enableSortTutorial');
       } else {
         context.commit('disableSortTutorial');
-      }
-    },
-    toggleDeleteTutorial(context, payload = 'on') {
-      if (payload === 'on') {
-        context.commit('enableDeleteTutorial');
-      } else {
-        context.commit('disableDeleteTutorial');
       }
     },
   },
