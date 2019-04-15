@@ -22,10 +22,10 @@ export default {
   name: 'Control',
   computed: {
     isAddPulse() {
-      return this.$store.getters.totalCities < 2 && !this.$store.state.isEditMode;
+      return this.$store.state.isTutorialMode && this.$store.getters.totalCities < 2 && !this.$store.state.isEditMode;
     },
     isDonePulse() {
-      return this.$store.state.isTutorialMode && this.$store.getters.totalCities < 3 && this.$store.state.isEditMode && !this.$store.state.isSortTutorial;
+      return this.$store.state.isTutorialMode && this.$store.state.isEditMode && !this.$store.state.isSortTutorial;
     }
   },
   methods: {
