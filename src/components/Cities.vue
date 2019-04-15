@@ -14,8 +14,8 @@
       <Info />
       <Tooltip v-if="this.$store.state.isTutorialMode && this.$store.getters.totalCities < 1 && !this.$store.state.isEditMode" pin="bottom" name="add-tooltip">Add New City</Tooltip>
       <Tooltip v-if="this.$store.state.isTutorialMode && this.$store.getters.totalCities === 1 && !this.$store.state.isEditMode" pin="bottom" name="add-another-tooltip">Add Another City</Tooltip>
-      <Tooltip v-if="this.$store.state.isTutorialMode && this.$store.getters.totalCities > 1 && !this.$store.state.isEditMode" pin="top" name="edit-mode-tooltip">Long Press a city and Release, to activate edit mode</Tooltip>
-      <Tooltip v-if="this.$store.state.isTutorialMode && this.$store.getters.totalCities > 1 && this.$store.state.isEditMode && this.$store.state.isSortTutorial" pin="top" name="sort-tooltip">Sort Using Handle</Tooltip>
+      <Tooltip v-if="this.$store.state.isTutorialMode && this.$store.getters.totalCities > 1 && !this.$store.state.isEditMode" pin="top" name="edit-mode-tooltip" :style="this.getMovingTooltipposition">Long Press a city and Release, to activate edit mode</Tooltip>
+      <Tooltip v-if="this.$store.state.isTutorialMode && this.$store.getters.totalCities > 1 && this.$store.state.isEditMode && this.$store.state.isSortTutorial" pin="top" name="sort-tooltip" :style="this.getMovingTooltipposition">Sort Using Handle</Tooltip>
       <Tooltip v-if="this.$store.state.isTutorialMode && this.$store.getters.totalCities > 1 && this.$store.state.isEditMode && !this.$store.state.isSortTutorial" pin="bottom" name="accept-tooltip">Deactivate Edit Mode</Tooltip>
     </div>
   </div>
@@ -53,6 +53,9 @@ export default {
         });
       },
     },
+    getMovingTooltipposition() {
+      return this.$store.getters.totalCities > 1 ? `top: ${(this.$store.getters.totalCities * 100) + 50}px` : '';
+    },
   },
   watch: {
     cityList(newList, oldList) {
@@ -89,17 +92,13 @@ export default {
   }
 
   .edit-mode-tooltip {
-    top: 350px;
+    position: absolute;
     left: calc(50vw - 171px);
-  }
-
-  .sort-tooltip,
-  .remove-tooltip {
-    top: 300px;
   }
 
   .sort-tooltip {
     left: 10px;
+    position: absolute;
   }
 
   .remove-tooltip {
