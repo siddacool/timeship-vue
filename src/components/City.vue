@@ -67,6 +67,9 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
+  // colors list
+  @import '../styles/colors';
+
   .city {
     display: block;
     background-color: #fff;
@@ -150,6 +153,7 @@ export default {
     svg {
       width: 16px;
       height: 16px;
+      fill: $danger-color;
     }
   }
 
