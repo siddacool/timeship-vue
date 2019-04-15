@@ -47,14 +47,14 @@ export default {
 
       const { hour }  = this.getDate;
 
-      if (hour >= 5 && hour < 7 ) {
+      if (hour >= 4 && hour < 7 ) {
         return 'early-morning';
       } else if (hour >= 7 && hour < 12) {
         return 'morning';
       } else if (hour >= 12 && hour < 17) {
         return 'afternoon';
       } else if (hour >= 17 && hour < 20) {
-        return 'eveneing';
+        return 'evening';
       } else {
         return 'night';
       }
@@ -119,6 +119,29 @@ export default {
 
     &.pulse {
       animation: shadow-pulse 1s infinite;
+    }
+
+    // phases
+    &.early-morning {
+      background-color: $phase-early-morning;
+      color: #fff;
+    }
+
+    &.morning {
+      background-color: $phase-morning;
+    }
+
+    &.afternoon {
+      background-color: $phase-afternoon;
+    }
+
+    &.evening {
+      background-color: $phase-evening;
+    }
+
+    &.night {
+      background-color: $phase-night;
+      color: #fff;
     }
   }
 
