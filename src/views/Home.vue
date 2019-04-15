@@ -16,6 +16,12 @@ export default {
     Cities,
     Control,
   },
+  mounted() {
+    if (this.$store.state.isFirstStart) {
+      this.$store.dispatch('toggleTutorialMode', 'on');
+      this.$store.dispatch('toggleSortTutorial', 'on');
+    }
+  }
 };
 </script>
 
