@@ -99,6 +99,10 @@ export default {
   .sort-tooltip {
     left: 10px;
     position: absolute;
+
+    @media only screen and (min-width: 1025px) {
+      left: calc(50vw - 16px);
+    }
   }
 
   .remove-tooltip {
