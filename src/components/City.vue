@@ -1,5 +1,5 @@
 <template>
-  <li class="city" :class="{'edit-mode': this.$store.state.isEditMode}" v-touch:longtap="onlongpress">
+  <li class="city" :class="[{'edit-mode': this.$store.state.isEditMode}, getPhaseOfTheDay]" v-touch:longtap="onlongpress">
     <a href="#" class="handle" v-show="this.$store.state.isEditMode" :class="{pulse: isHandlePulse}">
       <svg width="24px" height="24px" viewBox="0 0 24 24">
         <path d="M12 18c1.657 0 3 1.343 3 3s-1.343 3-3 3-3-1.343-3-3 1.343-3 3-3zm0-9c1.657 0 3 1.343 3 3s-1.343 3-3 3-3-1.343-3-3 1.343-3 3-3zm0-9c1.657 0 3 1.343 3 3s-1.343 3-3 3-3-1.343-3-3 1.343-3 3-3z"/>
@@ -40,6 +40,25 @@ export default {
     isHandlePulse() {
       return this.$store.state.isTutorialMode && this.pos === (this.$store.getters.totalCities - 1) && this.$store.getters.totalCities > 1 && this.$store.state.isEditMode && this.$store.state.isSortTutorial;
     },
+    getPhaseOfTheDay() {
+      if (this.date === '---') {
+        return 'stall';
+      };
+
+      const { hour }  = this.getDate;
+
+      if (hour >= 5 && hour < 7 ) {
+        return 'early-morning';
+      } else if (hour >= 7 && hour < 12) {
+        return 'morning';
+      } else if (hour >= 12 && hour < 17) {
+        return 'afternoon';
+      } else if (hour >= 17 && hour < 20) {
+        return 'eveneing';
+      } else {
+        return 'night';
+      }
+    }
   },
   filters: {
     makeDay(date) {
