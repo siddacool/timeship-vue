@@ -99,6 +99,7 @@ export default {
     border-radius: 4px;
     box-shadow: 1px 1px 5px 0px rgba(235, 136, 136, 0.078);
     position: relative;
+    transition: background-color 400ms, color 400ms;
 
     &.edit-mode {
       padding-left: 2rem;
