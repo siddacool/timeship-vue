@@ -11,11 +11,12 @@
           :timezone="town.timezone"
           :date="date"/>
       </draggable >
-      <Tooltip v-if="this.$store.getters.totalCities < 1 && !this.$store.state.isEditMode" pin="bottom" name="add-tooltip">Add New City</Tooltip>
-      <Tooltip v-if="this.$store.getters.totalCities === 1 && !this.$store.state.isEditMode" pin="bottom" name="add-another-tooltip">Add Another City</Tooltip>
-      <Tooltip v-if="this.$store.getters.totalCities === 2 && !this.$store.state.isEditMode" pin="top" name="edit-mode-tooltip">Long Press a city and Release, to activate edit mode</Tooltip>
-      <Tooltip v-if="this.$store.getters.totalCities === 2 && this.$store.state.isEditMode && this.$store.state.isSortTutorial" pin="top" name="sort-tooltip">Sort Using Handle</Tooltip>
-      <Tooltip v-if="this.$store.getters.totalCities < 3 && this.$store.state.isEditMode && !this.$store.state.isSortTutorial" pin="bottom" name="accept-tooltip">Deactivate Edit Mode</Tooltip>
+      <Info />
+      <Tooltip v-if="this.$store.state.isTutorialMode && this.$store.getters.totalCities < 1 && !this.$store.state.isEditMode" pin="bottom" name="add-tooltip">Add New City</Tooltip>
+      <Tooltip v-if="this.$store.state.isTutorialMode && this.$store.getters.totalCities === 1 && !this.$store.state.isEditMode" pin="bottom" name="add-another-tooltip">Add Another City</Tooltip>
+      <Tooltip v-if="this.$store.state.isTutorialMode && this.$store.getters.totalCities === 2 && !this.$store.state.isEditMode" pin="top" name="edit-mode-tooltip">Long Press a city and Release, to activate edit mode</Tooltip>
+      <Tooltip v-if="this.$store.state.isTutorialMode && this.$store.getters.totalCities === 2 && this.$store.state.isEditMode && this.$store.state.isSortTutorial" pin="top" name="sort-tooltip">Sort Using Handle</Tooltip>
+      <Tooltip v-if="this.$store.state.isTutorialMode && this.$store.getters.totalCities < 3 && this.$store.state.isEditMode && !this.$store.state.isSortTutorial" pin="bottom" name="accept-tooltip">Deactivate Edit Mode</Tooltip>
     </div>
   </div>
 </template>
@@ -24,8 +25,8 @@
 import draggable from 'vuedraggable'
 import DateTime from 'luxon/src/datetime';
 import City from '@/components/City.vue';
-import IconSet from '@/components/IconSet.vue';
 import Tooltip from '@/components/Tooltip.vue';
+import Info from '@/components/Info.vue';
 
 export default {
   name: 'Cities',
@@ -33,7 +34,7 @@ export default {
     City,
     draggable,
     Tooltip,
-    IconSet,
+    Info,
   },
   mounted() {
     this.sortableCities = this.$store.state.cityList;
@@ -69,6 +70,8 @@ export default {
     padding-top: 8px;
     max-height: calc(100vh - 145px);
     overflow-y: auto;
+    padding-bottom: 200px;
+    position: relative;
   }
 
   .add-tooltip,

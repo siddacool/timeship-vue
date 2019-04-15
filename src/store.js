@@ -19,6 +19,7 @@ export default new Vuex.Store({
     controlButton: '',
     cityList: [],
     searchCityList: [],
+    isTutorialMode: false,
     isEditMode: false,
     isSortTutorial: true,
   },
@@ -71,6 +72,12 @@ export default new Vuex.Store({
     disableEditMode(state) {
       state.isEditMode = false; // eslint-disable-line no-param-reassign
     },
+    enableTutorialMode(state) {
+      state.isTutorialMode = true; // eslint-disable-line no-param-reassign
+    },
+    disableTutorialMode(state) {
+      state.isTutorialMode = false; // eslint-disable-line no-param-reassign
+    },
     enableSortTutorial(state) {
       state.isSortTutorial = true; // eslint-disable-line no-param-reassign
     },
@@ -122,6 +129,13 @@ export default new Vuex.Store({
         context.commit('enableEditMode');
       } else {
         context.commit('disableEditMode');
+      }
+    },
+    toggleTutorialMode(context, payload = 'off') {
+      if (payload === 'on') {
+        context.commit('enableTutorialMode');
+      } else {
+        context.commit('disableTutorialMode');
       }
     },
     toggleSortTutorial(context, payload = 'on') {

@@ -2,7 +2,7 @@
   <div class="control">
     <div class="container">
       <div class="control-body">
-        <a href="#" class="btn done-btn" @click.prevent="turnOffEditMode" v-if="this.$store.state.isEditMode">
+        <a href="#" class="btn done-btn" @click.prevent="turnOffTutorial" v-if="this.$store.state.isEditMode">
           <span class="btn__round" :class="{pulse: isDonePulse}">
             <svg width="100%" height="100%" viewBox="0 0 24 24"><path d="M9 22l-10-10.598 2.798-2.859 7.149 7.473 13.144-14.016 2.909 2.806z"/></svg>
           </span>
@@ -32,8 +32,9 @@ export default {
     redirectToSearch() {
       this.$router.push({ name: 'add' });
     },
-    turnOffEditMode() {
+    turnOffTutorial() {
       this.$store.dispatch('toggleEditMode', 'off');
+      this.$store.dispatch('toggleTutorialMode', 'off');
     }
   }
 };
