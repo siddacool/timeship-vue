@@ -86,7 +86,7 @@ export default new Vuex.Store({
     disableSortTutorial(state) {
       state.isSortTutorial = false; // eslint-disable-line no-param-reassign
     },
-    disableTutorialAutolunch(state) {
+    disableTutorialAutoLaunch(state) {
       state.isFirstStart = false; // eslint-disable-line no-param-reassign
     },
   },
@@ -150,8 +150,8 @@ export default new Vuex.Store({
         context.commit('disableSortTutorial');
       }
     },
-    disableTutorialAutolunch(context) {
-      context.commit('disableTutorialAutolunch');
+    disableTutorialAutoLaunch(context) {
+      context.commit('disableTutorialAutoLaunch');
     },
   },
   getters: {

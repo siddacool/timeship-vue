@@ -35,6 +35,10 @@ export default {
     turnOffTutorial() {
       this.$store.dispatch('toggleEditMode', 'off');
       this.$store.dispatch('toggleTutorialMode', 'off');
+
+      if (this.$store.state.isFirstStart) {
+        this.$store.dispatch('disableTutorialAutoLaunch');
+      }
     }
   }
 };
