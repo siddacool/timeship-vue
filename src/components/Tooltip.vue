@@ -3,15 +3,15 @@
     <div class="holder">
       <slot></slot>
       <div class="pin" :class="pin">
-        <IconSet name="hollowArrow" />
+        <svg width="24px" height="24px" viewBox="0 0 24 24">
+          <path d="M0 7.33l2.829-2.83 9.175 9.339 9.167-9.339 2.829 2.83-11.996 12.17z"/>
+        </svg>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import IconSet from '@/components/IconSet.vue';
-
 export default {
   name: 'Tooltip',
   props: {
@@ -27,9 +27,6 @@ export default {
         return ['top', 'right', 'bottom', 'left', 'none'].indexOf(value) !== -1;
       }
     }
-  },
-  components: {
-    IconSet,
   },
 };
 </script>
