@@ -28,6 +28,7 @@ export default {
   display: flex;
   justify-content: center;
   min-height: 50px;
+  opacity: .5;
 }
 
 .info-btn {
