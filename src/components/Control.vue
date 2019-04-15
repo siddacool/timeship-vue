@@ -118,6 +118,10 @@ export default {
     .btn__round {
       background: $base-color;
     }
+
+    svg {
+      fill: $accent-color;
+    }
   }
 
   .done-btn {
