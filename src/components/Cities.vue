@@ -94,6 +94,10 @@ export default {
   .edit-mode-tooltip {
     position: absolute;
     left: calc(50vw - 171px);
+
+    @media only screen and (min-width: 1025px) {
+      margin-top: 100px;
+    }
   }
 
   .sort-tooltip {
@@ -101,7 +105,8 @@ export default {
     position: absolute;
 
     @media only screen and (min-width: 1025px) {
-      left: calc(50vw - 16px);
+      left: calc(50vw - 64px);
+      margin-top: 100px;
     }
   }
 
