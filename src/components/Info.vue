@@ -20,6 +20,9 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
+  // colors list
+  @import '../styles/colors';
+
 .info {
   position: absolute;
   bottom: 20px;
@@ -28,7 +31,7 @@ export default {
   display: flex;
   justify-content: center;
   min-height: 50px;
-  opacity: .5;
+  opacity: .8;
 }
 
 .info-btn {
@@ -38,5 +41,9 @@ export default {
   justify-content: center;
   align-items: center;
   cursor: pointer;
+
+  svg {
+    fill: $base-color;
+  }
 }
 </style>
