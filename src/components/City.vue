@@ -35,7 +35,7 @@ export default {
       return this.date !== '---' ? this.date.setZone(`UTC${this.timezone}`) : '---';
     },
     isHandlePulse() {
-      return this.$store.state.isTutorialMode && this.pos === (this.$store.getters.totalCities - 1) && this.$store.getters.totalCities < 3 && this.$store.state.isEditMode && this.$store.state.isSortTutorial;
+      return this.$store.state.isTutorialMode && this.pos === (this.$store.getters.totalCities - 1) && this.$store.getters.totalCities > 1 && this.$store.state.isEditMode && this.$store.state.isSortTutorial;
     },
   },
   filters: {
