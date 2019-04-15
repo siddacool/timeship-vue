@@ -10,6 +10,7 @@ const vuexPersist = new VuexPersist({
   storage: localStorage,
   reducer: state => ({
     cityList: state.cityList,
+    isFirstStart: state.isFirstStart,
   }),
 });
 
@@ -22,6 +23,7 @@ export default new Vuex.Store({
     isTutorialMode: false,
     isEditMode: false,
     isSortTutorial: true,
+    isFirstStart: true,
   },
   mutations: {
     increment(state) {
@@ -84,6 +86,9 @@ export default new Vuex.Store({
     disableSortTutorial(state) {
       state.isSortTutorial = false; // eslint-disable-line no-param-reassign
     },
+    disableTutorialAutolunch(state) {
+      state.isFirstStart = false; // eslint-disable-line no-param-reassign
+    },
   },
   actions: {
     starttime(context) {
@@ -144,6 +149,9 @@ export default new Vuex.Store({
       } else {
         context.commit('disableSortTutorial');
       }
+    },
+    disableTutorialAutolunch(context) {
+      context.commit('disableTutorialAutolunch');
     },
   },
   getters: {
