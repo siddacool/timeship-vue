@@ -66,6 +66,9 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
+  // colors list
+  @import '../styles/colors';
+
   .search-bar-body {
     background-color: #fff;
     height: 48px;
@@ -94,6 +97,8 @@ export default {
     padding-right: 1rem;
     display: inline-flex;
     align-items: center;
+    opacity: .5;
+
     svg {
       height: 14px;
       width: 14px;
@@ -110,6 +115,7 @@ export default {
     svg {
       height: 16px;
       width: 16px;
+      fill: $danger-color;
     }
   }
 </style>
