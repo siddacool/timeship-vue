@@ -41,8 +41,8 @@ export default {
       return this.$store.state.isTutorialMode && this.pos === (this.$store.getters.totalCities - 1) && this.$store.getters.totalCities > 1 && this.$store.state.isEditMode && this.$store.state.isSortTutorial;
     },
     getPhaseOfTheDay() {
-      if (this.date === '---') {
-        return 'stall';
+      if (this.date === '---' || this.$store.state.isEditMode) {
+        return 'no-phase';
       };
 
       const { hour }  = this.getDate;
