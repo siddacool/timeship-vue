@@ -5,12 +5,17 @@
         <path d="M12 18c1.657 0 3 1.343 3 3s-1.343 3-3 3-3-1.343-3-3 1.343-3 3-3zm0-9c1.657 0 3 1.343 3 3s-1.343 3-3 3-3-1.343-3-3 1.343-3 3-3zm0-9c1.657 0 3 1.343 3 3s-1.343 3-3 3-3-1.343-3-3 1.343-3 3-3z"/>
       </svg>
     </a>
-    <div class="location">
+    <div class="row-1">
       <span class="name">{{ name }}</span>
     </div>
-    <div class="timeprops">
+    <div class="row-2">
       <span class="time-12">{{ getDate | makeTime }}<span class="time-am">{{ getDate | makeAm }}</span></span>
+    </div>
+    <div class="row-3">
       <span class="date-month">{{ getDate | makeDay }}</span>
+      <div class="country">
+        <span>{{ country }}</span>
+      </div>
     </div>
     <a href="#" class="close" @click.prevent="deleteCity(itr)" v-show="this.$store.state.isEditMode">
       <svg width="24px" height="24px" viewBox="0 0 24 24">
@@ -146,40 +151,51 @@ export default {
     }
   }
 
-  .location {
+  .row-1 {
     margin-bottom: 4px;
-
-    .name {
-      font-size: 17px;
-      text-transform: capitalize;
-      word-break: break-word;
-
-      @media only screen and (min-width: 800px) {
-        font-size: 25px;
-      }
-    }
   }
 
-  .timeprops {
+  .row-3 {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
+  }
 
-    .time-12 {
-      font-size: 34px;
+  .name {
+    font-size: 17px;
+    text-transform: capitalize;
+    word-break: break-word;
+    font-weight: 500;
+
+    @media only screen and (min-width: 800px) {
+      font-size: 25px;
     }
+  }
 
-    .time-am {
+  .country {
+    font-size: 17px;
+    text-transform: capitalize;
+    word-break: break-word;
+
+    @media only screen and (min-width: 800px) {
+      font-size: 25px;
+    }
+  }
+
+  .time-12 {
+    font-size: 34px;
+  }
+
+  .time-am {
+    font-size: 22px;
+    font-weight: 600;
+  }
+
+  .date-month {
+    font-size: 14px;
+
+    @media only screen and (min-width: 800px) {
       font-size: 22px;
-      font-weight: 600;
-    }
-
-    .date-month {
-      font-size: 14px;
-
-      @media only screen and (min-width: 800px) {
-        font-size: 22px;
-      }
     }
   }
 
