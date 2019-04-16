@@ -14,7 +14,7 @@
     <div class="row-3">
       <span class="date-month">{{ getDate | makeDay }}</span>
       <div class="country">
-        <span>{{ country }}</span>
+        <span>{{ country | formatCountryName(maxCountryLength, fillerString) }}</span>
       </div>
     </div>
     <a href="#" class="close" @click.prevent="deleteCity(itr)" v-show="this.$store.state.isEditMode">
@@ -38,6 +38,12 @@ export default {
     'itr',
     'pos',
   ],
+  data() {
+    return {
+      maxCountryLength: 25,
+      fillerString: '...',
+    };
+  },
   computed: {
     getDate () {
       return this.date !== '---' ? this.date.setZone(`UTC${this.timezone}`) : '---';
@@ -74,6 +80,15 @@ export default {
     },
     makeTime(date) {
       return date !== '---' ? date.toFormat('h:mm') : date;
+    },
+    formatCountryName(country, maxLength, fillerString) {
+      let countryName = country;
+
+      if (countryName.length > maxLength) {
+        countryName = `${countryName.substring(0, maxLength - fillerString.length)}${fillerString}`;
+      }
+
+      return countryName;
     },
   },
   methods: {
