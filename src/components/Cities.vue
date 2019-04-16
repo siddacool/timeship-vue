@@ -11,6 +11,7 @@
           :timezone="town.timezone"
           :date="date"/>
       </draggable >
+      <Info v-if="this.$store.getters.totalCities < 1"/>
       <Tooltip v-if="this.$store.state.isTutorialMode && this.$store.getters.totalCities < 1 && !this.$store.state.isEditMode" pin="bottom" name="add-tooltip">Add New City</Tooltip>
       <Tooltip v-if="this.$store.state.isTutorialMode && this.$store.getters.totalCities === 1 && !this.$store.state.isEditMode" pin="bottom" name="add-another-tooltip">Add Another City</Tooltip>
       <Tooltip v-if="this.$store.state.isTutorialMode && this.$store.getters.totalCities > 1 && !this.$store.state.isEditMode" pin="top" name="edit-mode-tooltip" :style="this.getMovingTooltipposition">Long Press a city and Release, to activate edit mode</Tooltip>
@@ -25,6 +26,7 @@ import draggable from 'vuedraggable'
 import DateTime from 'luxon/src/datetime';
 import City from '@/components/City.vue';
 import Tooltip from '@/components/Tooltip.vue';
+import Info from '@/components/Info.vue';
 
 export default {
   name: 'Cities',
@@ -32,6 +34,7 @@ export default {
     City,
     draggable,
     Tooltip,
+    Info,
   },
   mounted() {
     this.sortableCities = this.$store.state.cityList;
