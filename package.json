@@ -5,15 +5,20 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "deploy-windows": "deploy.bat"
   },
   "dependencies": {
     "luxon": "^1.11.4",
     "purple-maps-api": "^0.0.9",
     "register-service-worker": "^1.6.2",
+    "v-debounce": "^0.1.2",
     "vue": "^2.6.6",
     "vue-router": "^3.0.1",
-    "vuex": "^3.0.1"
+    "vue2-touch-events": "^2.0.0",
+    "vuedraggable": "^2.20.0",
+    "vuex": "^3.0.1",
+    "vuex-persist": "^2.0.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.5.0",

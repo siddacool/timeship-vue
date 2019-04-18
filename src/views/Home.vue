@@ -1,20 +1,27 @@
 <template>
   <div class="home">
-    <div class="container">
-      <Cities />
-    </div>
+    <Cities />
+    <Control />
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
 import Cities from '@/components/Cities.vue';
+import Control from '@/components/Control.vue';
 
 export default {
   name: 'home',
   components: {
     Cities,
+    Control,
   },
+  mounted() {
+    if (this.$store.state.isFirstStart) {
+      this.$store.dispatch('toggleTutorialMode', 'on');
+      this.$store.dispatch('toggleSortTutorial', 'on');
+    }
+  }
 };
 </script>
 
@@ -23,11 +30,7 @@ export default {
   .home {
     background-color: #f5f5f5;
     display: block;
-    height: calc(100vh - 24px);
-    width: 100vw;
-
-    @media only screen and (min-width: 1025px) {
-      height: calc(100vh - 64px);
-    }
+    grid-row-start: 2;
+    grid-row-end: 3;
   }
 </style>

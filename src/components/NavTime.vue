@@ -13,6 +13,15 @@ import DateTime from 'luxon/src/datetime';
 
 export default {
   name: 'NavTime',
+  props: [
+    'timer',
+  ],
+  props: {
+    timer: {
+      type: Boolean,
+      default: false,
+    },
+  },
   data() {
     return {
       utcOffSet: '+00:00',
@@ -32,7 +41,9 @@ export default {
     },
   },
   mounted() {
-    this.$store.dispatch('starttime');
+    if (this.timer) {
+      this.$store.dispatch('starttime');
+    }
   }
 };
 </script>
@@ -44,11 +55,10 @@ export default {
     display: block;
     font-size: 14px;
     font-weight: 600;
-    height: 24px;
+    height: 100%;
     width: 100vw;
 
     @media only screen and (min-width: 1025px) {
-      height: 64px;
       font-size: 24px;
     }
   }

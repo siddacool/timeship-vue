@@ -1,11 +1,9 @@
 <template>
   <div id="app">
-    <!-- <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div> -->
-    <NavTime />
-    <router-view/>
+    <div class="layout">
+      <NavTime :timer="isTimerOn"/>
+      <router-view/>
+    </div>
   </div>
 </template>
 
@@ -16,6 +14,11 @@
     name: 'app',
     components: {
       NavTime,
+    },
+    computed: {
+      isTimerOn () {
+        return this.$route.query.timer &&  this.$route.query.timer === 'off' ? false : true;
+      }
     },
   };
 </script>
@@ -34,6 +37,18 @@
 
   body {
     font-family: $base-font;
+  }
+
+  .layout {
+    display: grid;
+    grid-template-rows: 24px auto;
+    grid-template-columns: 100vw;
+    overflow-x: hidden;
+    min-height: 100vh;
+
+    @media only screen and (min-width: 1025px) {
+      grid-template-rows: 64px auto;
+    }
   }
 
   @media only screen and (min-width: 1025px) {
