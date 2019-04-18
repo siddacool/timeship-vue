@@ -16,13 +16,22 @@ import DateTime from 'luxon/src/datetime';
 
 export default {
   name: 'CitySearch',
-  props: [
-    'country',
-    'name',
-    'timezone',
-    'date',
-    'itr',
-  ],
+  props: {
+    country: {
+      type: String,
+      required: true,
+    },
+    name: {
+      type: String,
+      required: true,
+    },
+    timezone: {
+      type: String,
+      required: true,
+    },
+    date: [String, Object],
+    itr: String,
+  },
   computed: {
     getDate () {
       return this.date.setZone(`UTC${this.timezone}`);
