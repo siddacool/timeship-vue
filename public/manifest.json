@@ -1,6 +1,7 @@
 {
-  "name": "timeship-vue",
-  "short_name": "timeship-vue",
+  "name": "Timeship",
+  "short_name": "Timeship",
+  "description": "Time From Cities Around the Globe",
   "icons": [
     {
       "src": "./img/icons/android-chrome-192x192.png",
@@ -13,8 +14,8 @@
       "type": "image/png"
     }
   ],
-  "start_url": "./index.html",
+  "start_url": "./",
   "display": "standalone",
-  "background_color": "#000000",
-  "theme_color": "#054fdb"
+  "theme_color": "#054fdb",
+  "background_color": "#054fdb"
 }
