@@ -59,6 +59,10 @@ export default {
       if (newList.length === oldList.length && newList !== oldList) {
         this.$store.dispatch('toggleSortTutorial', 'off');
       }
+
+      if (newList.length < 1) {
+        this.$store.dispatch('toggleEditMode', 'off');
+      }
     }
   },
 };
