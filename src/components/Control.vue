@@ -2,7 +2,7 @@
   <div class="control">
     <div class="container">
       <div class="control-body">
-        <a href="#" class="btn done-btn" @click.prevent="turnOffTutorial" v-if="this.$store.state.isEditMode">
+        <a href="#" class="btn done-btn" @click.prevent="turnOffTutorial" v-if="isEditMode">
           <span class="btn__round" :class="{pulse: isDonePulse}">
             <svg width="100%" height="100%" viewBox="0 0 24 24"><path d="M9 22l-10-10.598 2.798-2.859 7.149 7.473 13.144-14.016 2.909 2.806z"/></svg>
           </span>
@@ -18,14 +18,24 @@
 </template>
 
 <script>
+import { mapState, mapGetters } from 'vuex';
+
 export default {
   name: 'Control',
   computed: {
+    ...mapState([
+      'isEditMode',
+      'isTutorialMode',
+      'isSortTutorial',
+    ]),
+    ...mapGetters([
+      'totalCities',
+    ]),
     isAddPulse() {
-      return this.$store.state.isTutorialMode && this.$store.getters.totalCities < 2 && !this.$store.state.isEditMode;
+      return this.isTutorialMode && this.totalCities < 2 && !this.isEditMode;
     },
     isDonePulse() {
-      return this.$store.state.isTutorialMode && this.$store.state.isEditMode && !this.$store.state.isSortTutorial;
+      return this.isTutorialMode && this.isEditMode && !this.isSortTutorial;
     }
   },
   methods: {
