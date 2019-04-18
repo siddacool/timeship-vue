@@ -16,6 +16,12 @@ export default {
   props: [
     'timer',
   ],
+  props: {
+    timer: {
+      type: Boolean,
+      default: false,
+    },
+  },
   data() {
     return {
       utcOffSet: '+00:00',
