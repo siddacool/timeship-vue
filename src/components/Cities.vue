@@ -83,7 +83,7 @@ export default {
     padding-top: 8px;
     height: calc(100vh - 145px);
     overflow-y: auto;
-    padding-bottom: 100px;
+    padding-bottom: 8px;
     position: relative;
   }
 
