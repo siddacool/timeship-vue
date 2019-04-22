@@ -86,7 +86,7 @@ export default {
   },
   filters: {
     makeDay(date) {
-      return date !== '---' ? date.toFormat('cccc, MMM dd') : date;
+      return date !== '---' ? date.toFormat('ccc, MMM dd') : date;
     },
     makeAm(date) {
       return date !== '---' ? date.toFormat('a') : date;
@@ -183,6 +183,10 @@ export default {
     margin-bottom: 4px;
   }
 
+  .row-2 {
+    margin-bottom: -2px;
+  }
+
   .row-3 {
     display: flex;
     justify-content: space-between;
@@ -193,7 +197,8 @@ export default {
     font-size: 17px;
     text-transform: capitalize;
     word-break: break-word;
-    font-weight: 500;
+    font-weight: 600;
+    letter-spacing: .4px;
 
     @media only screen and (min-width: 800px) {
       font-size: 25px;
@@ -201,7 +206,7 @@ export default {
   }
 
   .country {
-    font-size: 17px;
+    font-size: 16px;
     text-transform: capitalize;
     word-break: break-word;
 
@@ -212,6 +217,7 @@ export default {
 
   .time-12 {
     font-size: 34px;
+    line-height: 1.1;
   }
 
   .time-am {
@@ -221,6 +227,7 @@ export default {
 
   .date-month {
     font-size: 14px;
+    padding-left: 4px;
 
     @media only screen and (min-width: 800px) {
       font-size: 22px;
