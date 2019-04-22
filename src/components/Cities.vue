@@ -81,7 +81,7 @@ export default {
 <style scoped lang="scss">
   .cities {
     padding-top: 8px;
-    height: calc(100vh - 145px);
+    height: calc(100vh - 120px);
     overflow-y: auto;
     padding-bottom: 8px;
     position: relative;
