@@ -1,7 +1,7 @@
 <template>
   <div class="cities">
     <div class="container">
-      <draggable v-model="cityList" :disabled="!this.$store.state.isEditMode" handle=".handle">
+      <draggable v-model="cityList" :disabled="!isEditMode" handle=".handle">
         <City v-for="(town, index) in cityList"
           :key="town.city_id"
           :itr="town.city_id"
@@ -11,17 +11,18 @@
           :timezone="town.timezone"
           :date="date"/>
       </draggable >
-      <Info v-if="this.$store.getters.totalCities < 1"/>
-      <Tooltip v-if="this.$store.state.isTutorialMode && this.$store.getters.totalCities < 1 && !this.$store.state.isEditMode" pin="bottom" name="add-tooltip">Add New City</Tooltip>
-      <Tooltip v-if="this.$store.state.isTutorialMode && this.$store.getters.totalCities === 1 && !this.$store.state.isEditMode" pin="bottom" name="add-another-tooltip">Add Another City</Tooltip>
-      <Tooltip v-if="this.$store.state.isTutorialMode && this.$store.getters.totalCities > 1 && !this.$store.state.isEditMode" pin="top" name="edit-mode-tooltip" >Long Press a city and Release, to activate edit mode</Tooltip>
-      <Tooltip v-if="this.$store.state.isTutorialMode && this.$store.getters.totalCities > 1 && this.$store.state.isEditMode && this.$store.state.isSortTutorial" pin="top" name="sort-tooltip">Sort Using Handle</Tooltip>
-      <Tooltip v-if="this.$store.state.isTutorialMode && this.$store.getters.totalCities > 1 && this.$store.state.isEditMode && !this.$store.state.isSortTutorial" pin="bottom" name="accept-tooltip">Deactivate Edit Mode</Tooltip>
+      <Info v-if="totalCities < 1"/>
+      <Tooltip v-if="isTutorialMode && totalCities < 1 && !isEditMode" pin="bottom" name="add-tooltip">Add New City</Tooltip>
+      <Tooltip v-if="isTutorialMode && totalCities === 1 && !isEditMode" pin="bottom" name="add-another-tooltip">Add Another City</Tooltip>
+      <Tooltip v-if="isTutorialMode && totalCities > 1 && !isEditMode" pin="top" name="edit-mode-tooltip" >Long Press a city and Release, to activate edit mode</Tooltip>
+      <Tooltip v-if="isTutorialMode && totalCities > 1 && isEditMode && isSortTutorial" pin="top" name="sort-tooltip">Sort Using Handle</Tooltip>
+      <Tooltip v-if="isTutorialMode && totalCities > 1 && isEditMode && !isSortTutorial" pin="bottom" name="accept-tooltip">Deactivate Edit Mode</Tooltip>
     </div>
   </div>
 </template>
 
 <script>
+import { mapState, mapGetters } from 'vuex';
 import draggable from 'vuedraggable'
 import DateTime from 'luxon/src/datetime';
 import City from '@/components/City.vue';
@@ -53,6 +54,14 @@ export default {
         });
       },
     },
+    ...mapState([
+      'isTutorialMode',
+      'isSortTutorial',
+      'isEditMode',
+    ]),
+    ...mapGetters([
+      'totalCities',
+    ])
   },
   watch: {
     cityList(newList, oldList) {
@@ -72,9 +81,9 @@ export default {
 <style scoped lang="scss">
   .cities {
     padding-top: 8px;
-    height: calc(100vh - 145px);
+    height: calc(100vh - 24px);
     overflow-y: auto;
-    padding-bottom: 100px;
+    padding-bottom: 120px;
     position: relative;
   }
 

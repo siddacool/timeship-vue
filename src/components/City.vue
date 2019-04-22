@@ -1,6 +1,6 @@
 <template>
-  <li class="city" :class="[{'edit-mode': this.$store.state.isEditMode}, getPhaseOfTheDay]" v-touch:longtap="onlongpress">
-    <a href="#" class="handle" v-show="this.$store.state.isEditMode" :class="{pulse: isHandlePulse}">
+  <li class="city" :class="[{'edit-mode': isEditMode}, getPhaseOfTheDay]" v-touch:longtap="onlongpress">
+    <a href="#" class="handle" v-show="isEditMode" :class="{pulse: isHandlePulse}">
       <svg width="24px" height="24px" viewBox="0 0 24 24">
         <path d="M12 18c1.657 0 3 1.343 3 3s-1.343 3-3 3-3-1.343-3-3 1.343-3 3-3zm0-9c1.657 0 3 1.343 3 3s-1.343 3-3 3-3-1.343-3-3 1.343-3 3-3zm0-9c1.657 0 3 1.343 3 3s-1.343 3-3 3-3-1.343-3-3 1.343-3 3-3z"/>
       </svg>
@@ -17,7 +17,7 @@
         <span>{{ country | formatCountryName(maxCountryLength, fillerString) }}</span>
       </div>
     </div>
-    <a href="#" class="close" @click.prevent="deleteCity(itr)" v-show="this.$store.state.isEditMode">
+    <a href="#" class="close" @click.prevent="deleteCity(itr)" v-show="isEditMode">
       <svg width="24px" height="24px" viewBox="0 0 24 24">
         <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.5 16.084L16.097 17.5l-4.09-4.096L7.905 17.5 6.5 16.095l4.093-4.092L6.5 7.905 7.905 6.5l4.088 4.089L16.084 6.5 17.5 7.903l-4.092 4.087 4.092 4.094z"/>
       </svg>
@@ -26,6 +26,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
 import DateTime from 'luxon/src/datetime';
 
 export default {
@@ -78,11 +79,14 @@ export default {
       } else {
         return 'night';
       }
-    }
+    },
+    ...mapState([
+      'isEditMode',
+    ]),
   },
   filters: {
     makeDay(date) {
-      return date !== '---' ? date.toFormat('cccc, MMM dd') : date;
+      return date !== '---' ? date.toFormat('ccc, MMM dd') : date;
     },
     makeAm(date) {
       return date !== '---' ? date.toFormat('a') : date;
@@ -122,8 +126,8 @@ export default {
     display: block;
     background-color: #fff;
     margin-bottom: 8px;
-    margin-left: 1rem;
-    margin-right: 1rem;
+    margin-left: 8px;
+    margin-right: 8px;
     padding: .8rem;
     border-radius: 4px;
     box-shadow: 1px 1px 5px 0px rgba(235, 136, 136, 0.078);
@@ -179,6 +183,10 @@ export default {
     margin-bottom: 4px;
   }
 
+  .row-2 {
+    margin-bottom: -2px;
+  }
+
   .row-3 {
     display: flex;
     justify-content: space-between;
@@ -189,7 +197,8 @@ export default {
     font-size: 17px;
     text-transform: capitalize;
     word-break: break-word;
-    font-weight: 500;
+    font-weight: 600;
+    letter-spacing: .4px;
 
     @media only screen and (min-width: 800px) {
       font-size: 25px;
@@ -197,7 +206,7 @@ export default {
   }
 
   .country {
-    font-size: 17px;
+    font-size: 16px;
     text-transform: capitalize;
     word-break: break-word;
 
@@ -208,6 +217,7 @@ export default {
 
   .time-12 {
     font-size: 34px;
+    line-height: 1.1;
   }
 
   .time-am {
@@ -217,6 +227,7 @@ export default {
 
   .date-month {
     font-size: 14px;
+    padding-left: 4px;
 
     @media only screen and (min-width: 800px) {
       font-size: 22px;
