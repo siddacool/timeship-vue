@@ -126,8 +126,8 @@ export default {
     display: block;
     background-color: #fff;
     margin-bottom: 8px;
-    margin-left: 1rem;
-    margin-right: 1rem;
+    margin-left: 8px;
+    margin-right: 8px;
     padding: .8rem;
     border-radius: 4px;
     box-shadow: 1px 1px 5px 0px rgba(235, 136, 136, 0.078);
