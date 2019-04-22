@@ -82,7 +82,7 @@ export default {
     width: 100%;
     display: flex;
     justify-content: center;
-    box-shadow: 1px 1px 5px 0px rgba(235, 136, 136, 0.078);
+    box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.09);
 
     @media only screen and (min-width: 1025px) {
       padding-top: 1.2rem;
